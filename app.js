@@ -103,7 +103,7 @@ function statusSequence(victory, msg) {
   message.style.color = color;
 
   // Send message to function
-  // setMessage(msg);
+  setMessage(msg);
 
   //Play Again?
   guessBtn.value = 'Play Again';
