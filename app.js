@@ -33,7 +33,11 @@ guessBtn.addEventListener('click', validateGuess);
 // Not using 'click' event because click would automatically reload the page
 // before we get the chance to show the player the message, after loss or victory.
 // The mousedown event listens for only the mouse actually been clicked again for the action to happen
-gameUI.addEventListener('mousedown', playAgain);
+gameUI.addEventListener('mousedown', e => {
+  if (e.target.className === 'play-again') {
+    window.location.reload();
+  }
+});
 
 function validateGuess(e) {
   // Collect the user's guess
@@ -108,13 +112,6 @@ function statusSequence(victory, msg) {
   //Play Again?
   guessBtn.value = 'Play Again';
   guessBtn.className += 'play-again';
-}
-
-function playAgain(e) {
-  if (e.target.className === 'play-again') {
-    window.location.reload();
-  }
-  setMessage('', ''); // So the message kept showing after loss sequence; temporary fix
 }
 
 function getRandomNum() {
